@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conscious - Nachhaltig Reisen</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Lato');
+        :root {
+            --primary: #000000;
+            --secondary: rgba(124,194,197,255);
+            --accent: #ffffff;
+            --background: #ffffff;
+            --white: #ffffff;
+            --highlight: #cde2e4;
+            --navbar-footer-bg: #d3d3d3;
+        }
+
+        /* Allgemeine Stile */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font: 1em/1.5 "Lato", sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizelegibility;
+            background-color: var(--background);
+            color: var(--primary);
+        }
+
+        body {
+            font-size: 1.3em;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary);
+        }
+
+        a:hover {
+            color: var(--secondary);
+        }
+
+        /* Header */
+        header {
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            background: url('bilder/header-image.jpg') center no-repeat;
+            background-size: cover;
+        }
+
+        header .content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+        }
+
+        header hgroup {
+            display: inline-block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: var(--white);
+            border: 5px solid var(--white);
+            padding: 0.5em 3em;
+            background-color: rgba(0, 0, 0, 0.2);
+            z-index: 2;
+        }
+
+        header h1 {
+            font-size: 4rem;
+            margin: 0;
+        }
+
+        header i {
+            font-size: 1.2rem;
+            font-style: italic;
+        }
+
+        header .overlay {
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            background: #333 center no-repeat;
+            background-size: cover;
+            z-index: 0;
+            opacity: 0;
+            filter: blur(4px);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background: var(--navbar-footer-bg);
+            overflow-y: auto;
+            transition: left 0.3s ease;
+            z-index: 1000;
+        }
+
+        nav.open {
+            left: 0;
+        }
+
+        nav a {
+            display: block;
+            padding: 15px;
+            font-size: 1.2em;
+            color: var(--primary);
+            border-bottom: 1px solid rgb(0, 0, 0);
+        }
+
+        nav a:hover {
+            background-color: var(--secondary);
+            color: var(--primary);
+        }
+
+        .menu-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1100;
+            cursor: pointer;
+            background: var(--secondary);
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: var(--primary);
+            margin: 5px 0;
+        }
+
+        /* Blockquote Section */
+        .site {
+            padding: 20em 0;
+            text-align: center;
+            background-color: var(--highlight);
+            font-size: 0.8em;
+            color: #444;
+            position: relative;
+        }
+
+        blockquote {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: var(--white);
+            border-left: 5px solid var(--secondary);
+            font-style: italic;
+        }
+
+        blockquote img {
+            float: left;
+            margin-right: 20px;
+            width: 100px;
+            height: auto;
+            border-radius: 50%;
+        }/* Nachhaltiges Reisen Section */
+.sustainable-travel {
+    padding: 1rem 1rem;
+    margin: 10rem auto;
+    max-width: 800px;
+    background-color: var(--white); /* Hintergrundfarbe für den Textbereich */
+    border-radius: 100px; /* Abgerundete Ecken */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Leichte Schatten für Tiefe */
+    text-align: center;
+}
+
+.sustainable-travel h3 {
+    font-size: 1.8rem; /* Größerer Titel */
+    color: var(--primary);
+    margin-bottom: 3rem;
+    font-weight: bold;
+}
+
+.sustainable-content p {
+    font-size: 1rem; /* Gut lesbare Schriftgröße */
+    line-height: 1.6; /* Angenehmer Zeilenabstand */
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.sustainable-content h4 {
+    font-size: 1.2rem;
+    color: var(--secondary); /* Sekundärfarbe für den Untertitel */
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .sustainable-travel {
+        padding: 1.5rem; /* Weniger Padding auf kleineren Bildschirmen */
+    }
+
+    .sustainable-travel h3 {
+        font-size: 1.5rem; /* Kleinere Schriftgröße für Titel */
+    }
+
+    .sustainable-content p {
+        font-size: 0.95rem; /* Schriftgröße leicht verringern */
+    }
+
+    .sustainable-content h4 {
+        font-size: 1rem; /* Kleinere Schriftgröße für Untertitel */
+    }
+}/* Sicherstellen, dass der Hintergrund des gesamten Body geändert wird */
+.dark-mode {
+    background-color: #000000 !important; /* Hintergrund Schwarz */
+    color: #ffffff !important; /* Text Weiß */
+}
+
+/* Elemente, die explizit den Hintergrund oder Text blockieren */
+.dark-mode * {
+    background-color: transparent !important; /* Verhindere weiße Hintergründe */
+    color: inherit !important; /* Vererbe die Textfarbe */
+}
+
+/* Spezielle Elemente wie Navigation oder Header */
+.dark-mode nav,
+.dark-mode header {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+}
+
+/* Boxen und spezifische Abschnitte */
+.dark-mode .image-box,
+.dark-mode .destination-box,
+.dark-mode .testimonial,
+.dark-mode .tip,
+.dark-mode .dos,
+.dark-mode .donts,
+.dark-mode .signup-form,
+.dark-mode footer,
+.dark-mode header hgroup {
+    background-color: #000000 !important; /* Kästen Schwarz */
+    color: #ffffff !important; /* Text in Kästen Weiß */
+    border-color: #ffffff !important; /* Rahmen Weiß */
+}
+
+/* Links */
+.dark-mode a {
+    color: #ffffff !important; /* Links Weiß */
+}
+
+.dark-mode a:hover {
+    color: #000000 !important; /* Links Schwarz beim Hover */
+}
+
+/* Header-Text */
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode h3,
+.dark-mode h4,
+.dark-mode p {
+    color: #ffffff !important; /* Text Weiß */
+}
+
+
+.parallax {
+    background: url('bilder/hintergrund.jpg') no-repeat center fixed;
+    background-size: cover;
+    height: 300px;
+    position: relative;
+}
+
+.parallax .sustainable-travel {
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+        .image-grid {
+    display: grid; /* Grid-System aktivieren */
+    grid-template-columns: repeat(2, 1fr); /* Zwei Spalten */
+    gap: 1.5rem; /* Abstand zwischen den Karten */
+    margin: 4rem auto; /* Zentrierung nach oben/unten */
+    max-width: 1200px; /* Maximale Breite des Rasters */
+    padding: 1rem;
+}
+
+.image-box {
+    background: var(--primary);
+    color: var(--highlight);
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}.image-grid {
+    grid-template-columns: repeat(2, 1fr); /* Zwei Spalten */
+    gap: 1rem; /* Weniger Abstand zwischen den Karten */
+    margin: 3rem auto; /* Weniger Abstand nach oben/unten */
+    max-width: 1000px; /* Maximale Breite des Rasters verkleinert */
+}
+
+.image-box {
+    padding: 1rem; /* Weniger Innenabstand */
+    border-radius: 6px; /* Leichter abgerundete Ecken */
+    font-size: 0.9rem; /* Kleinere Schriftgröße innerhalb der Box */
+}
+
+.image-box img {
+    width: 500%; /* Bild etwas kleiner */
+    height: auto;
+    margin-bottom: 0.5rem; /* Weniger Abstand unter dem Bild */
+}
+
+.image-box h3 {
+    font-size: 1rem; /* Kleinere Überschrift */
+    margin-bottom: 0.3rem; /* Weniger Abstand zur nächsten Zeile */
+}
+
+.image-box p {
+    font-size: 0.85rem; /* Kleinere Beschreibungstexte */
+    line-height: 1.4; /* Leichter kompaktere Zeilenabstände */
+}
+@media (max-width: 768px) {
+    .image-grid {
+        grid-template-columns: 1fr; /* Eine Spalte bei schmalen Bildschirmen */
+    }
+}
+
+
+.image-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(211, 249, 255, 0.2);
+}
+
+.image-box img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.image-box h3 {
+    margin-bottom: 0.5rem;
+}
+
+        .image-box.visible {
+            opacity: 0,5;
+            transform: translateY(0);
+        
+}
+        
+   /* Dos and Don'ts Styles */
+.dos-donts {
+    display: flex;
+    flex-wrap: wrap; /* Flexibles Layout für kleinere Bildschirme */
+    justify-content: center;
+    gap: 2rem;
+    margin: 3rem auto;
+    max-width: 1200px;
+    padding: 1rem;
+}
+
+.dos, .donts {
+    padding: 2rem 1.5rem;
+    background: linear-gradient(135deg, var(--highlight), #ffffff); /* Farbverlauf für einen modernen Look */
+    border-radius: 20px; /* Leicht abgerundete Ecken */
+    max-width: 400px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative; /* Für zusätzliche Stile */
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dos::before, .donts::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+    transform: scale(0);
+    transition: transform 0.3s ease;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.dos:hover::before, .donts:hover::before {
+    transform: scale(1);
+}
+
+.dos:hover, .donts:hover {
+    transform: translateY(-10px); /* Leichtes Schweben beim Hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Stärkerer Schatten */
+}
+
+.dos h3, .donts h3 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary);
+    z-index: 1; /* Stellt sicher, dass der Text über der Animation liegt */
+}
+
+.dos ul, .donts ul {
+    list-style: none;
+    padding: 0;
+    z-index: 1; /* Stellt sicher, dass der Inhalt sichtbar bleibt */
+}
+
+.dos ul li, .donts ul li {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    color: var(--primary);
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .dos-donts {
+        flex-direction: column; /* Stapeln bei kleineren Bildschirmen */
+    }
+
+    .dos, .donts {
+        max-width: 100%;
+    }
+}.curved-text-video-section {
+    background-color: #000000; /* Schwarzer Hintergrund */
+    margin: ;
+    padding: 8rem 8; /* Abstand oben und unten */
+    text-align: center; /* Zentriert Inhalt horizontal */
+    min-height: 600px; /* Stellt sicher, dass der Bereich mindestens 500px hoch ist */
+}
+
+.curved-text {
+    text-align: center;
+    margin-bottom: -80px; /* Abstand zum Video */
+    margin-top: 10px; /* Zusätzlicher Raum nach oben */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1; /* Sicherstellen, dass der Text sichtbar ist */
+}
+
+.curved-text svg {
+    width: 400px;
+    height: 220px;
+}
+
+.curved-text text {
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    fill: #ffffff; /* Textfarbe in Weiß ändern */
+}
+
+
+
+
+        .video-container {
+            width: 300px; /* Breite des Videos */
+            height: 300px; /* Höhe des Videos */
+            margin: 0 auto; /* Zentriert das Video */
+            border-radius: 50%; /* Kreisförmige Darstellung */
+            overflow: hidden; /* Verhindert, dass das Video aus dem Kreis ragt */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Schatten für einen 3D-Effekt */
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Das Video wird innerhalb des Kreises skaliert */
+        }
+
+        @media (max-width: 768px) {
+            .dos-donts {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .dos, .donts {
+                max-width: 100%;
+            }
+
+            .video-container {
+                margin-top: 1rem;
+            }
+        }
+        .testimonials {
+    text-align: center;
+    background-color: var(--highlight);
+    padding: 3rem 1rem;
+    margin: 3rem auto;
+    border-radius: 8px;
+    max-width: 800px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.testimonials h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--primary);
+}
+
+.testimonials-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    justify-items: center;
+}
+
+.testimonial {
+    background-color: var(--white);
+    padding: 1.5rem;
+    border-radius: 0px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.testimonial p {
+    font-size: 1rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+    font-style: italic;
+}
+
+.testimonial h4 {
+    font-size: 1rem;
+    color: var(--secondary);
+    text-align: right;
+    margin: 0;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .testimonials-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+       /* Tipps Grid Section */
+.centered-section {
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+.centered-section h2 {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    color: var(--primary);
+}
+
+.tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive Grid */
+    gap: 1.5rem;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.tip {
+    background: var(--highlight); /* Hintergrundfarbe */
+    border: 2px solid var(--secondary); /* Border mit Sekundärfarbe */
+    border-radius: 10px; /* Abgerundete Ecken */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Schatten für Tiefe */
+    overflow: hidden; /* Bildbegrenzung */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animation */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.tip:hover {
+    transform: translateY(-5px); /* Leichtes Schweben */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Stärkerer Schatten */
+}
+
+.tip img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover; /* Skaliert das Bild, ohne es zu verzerren */
+    border-bottom: 2px solid var(--secondary); /* Trennung durch Linie */
+}
+
+.tip-content {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.tip-content h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    color: var(--primary);
+}
+
+.tip-content p {
+    font-size: 0.95rem;
+    color: var(--primary);
+    line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+    .tips-grid {
+        grid-template-columns: 1fr; /* Eine Spalte bei kleineren Geräten */
+    }
+
+    .tip img {
+        height: 120px; /* Bildhöhe für kleinere Bildschirme anpassen */
+    }
+}
+.signup-form {
+    text-align: center;
+    background-color: var(--highlight);
+    padding: 3rem 1rem;
+    margin: 3rem auto;
+    border-radius: 10px;
+    max-width: 600px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.signup-form h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary);
+}
+
+.signup-form form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.form-group {
+    width: 100%;
+    text-align: left;
+}
+
+.form-group label {
+    font-size: 1rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+    border-color: var(--secondary);
+    outline: none;
+}
+
+.form-group button {
+    background-color: var(--secondary);
+    color: var(--white);
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.form-group button:hover {
+    background-color: var(--primary);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .signup-form {
+        padding: 2rem 1rem;
+    }
+
+    .form-group input, .form-group button {
+        font-size: 0.9rem;
+        padding: 0.7rem;
+    }
+}
+
+
+        footer {
+            background: var(--navbar-footer-bg);
+            color: var(--primary);
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .dos-donts {
+                flex-direction: column;
+            }
+
+            .dos, .donts {
+                margin: 1rem 0;
+            }
+        }
+
+        .destinations {
+            text-align: center;
+            padding: -3rem;
+            margin: 10rem auto;
+            max-width: 2000px;
+            position: relative;
+            background-image: url('bilder/palme.webp');
+            background-size: 700px 500px;
+            background-position: calc(-10% - 50px) center;
+            background-repeat: no-repeat;
+        }
+
+        .destinations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem auto;
+            padding: 1rem;
+        }
+
+        .destination-box {
+            background: var(--highlight);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .destination-box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .destination-box img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .destination-box h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }.custom-footer {
+    background-color: #000000; /* Hintergrundfarbe des Footers */
+    padding: 2rem 1rem;
+    text-align: center;
+    box-shadow: 0 -4px 8px rgba(97, 96, 96, 0.1);
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap; /* Flexibles Layout für kleinere Bildschirme */
+    justify-content: space-around;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 2rem; /* Abstand zwischen den Elementen */
+}
+
+.footer-text {
+    flex: 1;
+    min-width: 280px;
+    text-align: left;
+}
+
+.footer-text h2 {
+    font-size: 1.8rem;
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+.footer-text p {
+    font-size: 1rem;
+    color: rgb(255, 255, 255);
+    margin-bottom: 1.5rem;
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem; /* Abstand zwischen den Icons */
+}
+
+.social-icons img {
+    width: 32px;
+    height: 32px;
+    transition: transform 0.3s ease;
+}
+
+.social-icons img:hover {
+    transform: scale(1.1); /* Leichtes Vergrößern beim Hover */
+}
+<footer
+.footer-qr {
+    flex: 1;
+    min-width: 280px;
+    text-align: center;
+}
+
+.footer-qr p {
+    font-size: 1rem;
+    color: rgb(255, 255, 255);
+    margin-bottom: 1rem;
+}
+
+.footer-qr img {
+    width: 150px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.footer-qr img:hover {
+    transform: rotate(5deg); /* Leichter Rotations-Effekt beim Hover */
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-text, .footer-qr {
+        text-align: center;
+    }
+}
+</footer>.fab {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--secondary);
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.fab a {
+    display: block;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--white);
+    text-decoration: none;
+}
+
+    </style>
+
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="content">
+            <hgroup>
+                <h1>Conscious.</h1>
+                <i>Nachhaltig Reisen</i>
+            </hgroup>
+        </div>
+        <div class="overlay"></div>
+    </header>
+
+    <!-- Menu Toggle Button -->
+    <div class="menu-toggle" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="mobile-nav">
+        <a href="#why"><br></br></a>
+        <a href="#how">Wie geht's?</a>
+        <a href="#destinations">Reiseziele</a>
+        <a href="#testimonials">Kundenmeinungen</a>
+    
+    </nav>
+
+    <!-- Blockquote Section -->
+    <section class="site">
+        <blockquote>
+            <img src="bilder/jose.png" alt="jose">
+            "Es ist billiger, den Planeten jetzt zu schützen, als ihn später zu reparieren."  
+            <br><br>
+            ― José Manuel Barroso
+            <br><br> ein Zitat das uns daran errinert, jetzt aktiv zu handeln, bevor die Konsequenzen unseres Nichthandelns zu schwerwiegenden und teuren Schäden führen
+        </blockquote>
+    </section>
+    <div class="background-container">
+        <div class="background-section section-1"></div>
+        <div class="background-section section-2"></div>
+        <div class="background-section section-3"></div>
+    </div>
+    <div class="dark-mode-container">
+        <button id="dark-mode-toggle" class="dark-mode-btn">Dark Mode</button>
+    </div>    
+    
+    <section class="parallax">
+        <div class="sustainable-travel">
+            <h3>Warum sollte man nachhaltig reisen?</h3>
+            <div class="sustainable-content">
+                <p>
+                    Nachhaltiges Reisen schützt die Umwelt, stärkt lokale Gemeinschaften und bewahrt Kulturen sowie natürliche Lebensräume.
+                    Es reduziert den CO₂-Fußabdruck, vermeidet Massentourismus und fördert authentische Erlebnisse.
+                    So bleibt die Welt auch für künftige Generationen lebenswert.
+                </p>
+                <h4>Nachhaltiges Reisen ist ein Gewinn für alle Beteiligten</h4>
+            </div>
+        </div>
+    </section>
+    
+    
+    <section class="image-grid">
+        <div class="image-box">
+            <img src="bilder/hotel.jpg" alt="Reisebild 1">
+            <h3>Nachhaltige Unterkünfte</h3>
+            <p>Nachhaltige Unterkünfte – Umweltfreundlich Reisen und Übernachten
+
+                Die Entscheidung für nachhaltige Unterkünfte während einer Reise trägt wesentlich dazu bei, die Umwelt zu schützen, den ökologischen Fußabdruck zu minimieren und lokale Gemeinschaften zu unterstützen. <br></br>
+                Umweltfreundliche Hotels, Pensionen und Ferienhäuser setzen verstärkt auf nachhaltige Praktiken, um Gästen ein komfortables, authentisches und umweltbewusstes Erlebnis zu bieten.
+                
+                Was macht eine Unterkunft nachhaltig?</p>
+        </div>
+        <div class="image-box">
+            <img src="bilder/essen.jpg" alt="Reisebild 2">
+            <h3>Lokale Küche</h3>
+            <p>Entdecke die Region mit jedem Bissen
+Die lokale Küche bietet dir einen authentischen Einblick in die Kultur und Traditionen deines Reiseziels. Mit frischen, regionalen Zutaten unterstützt du die Umwelt und die lokale Wirtschaft.
+<br></br>
+Kulturelle Verbindung: Essen spiegelt die Seele eines Ortes wider. Probier traditionelle Gerichte für ein echtes Erlebnis.<br></br>
+Nachhaltigkeit: Lokale Produkte reduzieren den CO₂-Fußabdruck und sind oft frischer und gesünder.<br></br>
+Gaumen-Abenteuer: Entdecke neue Geschmacksrichtungen auf Märkten, Straßenständen oder in kleinen Restaurants.</p>
+        </div>
+        <div class="image-box">
+            <img src="bilder/natur.jpg" alt="Reisebild 3">
+            <h3>Naturschutzgebiete</h3>
+            <p>Erlebe die Schönheit unberührter Landschaften und geschützter Parks, während du zur Erhaltung der Natur beiträgst.
+                <br></br>
+Einzigartige Erlebnisse: Beobachte seltene Tiere und Pflanzen in ihrem natürlichen Lebensraum.<br></br>
+Nachhaltiger Tourismus: Unterstütze Schutzprojekte und lerne die Bedeutung der Biodiversität kennen.<br></br>
+Ruhe und Inspiration: Entkomme dem Alltag und finde Erholung in unberührter Natur.<br></br>
+Tipp: Respektiere die Regeln der Schutzgebiete, um ihre Schönheit für kommende Generationen zu bewahren! 🌿</p>
+        </div>
+        <div class="image-box">
+            <img src="bilder/festival.jpg" alt="Reisebild 4">
+            <h3>Kulturelle Erlebnisse</h3>
+            <p>Kulturelle Erlebnisse: Lokale Traditionen entdecken
+Tauche in die Vielfalt der Kulturen ein und erlebe authentische Traditionen hautnah.
+<br></br>
+Einzigartige Begegnungen: Nimm an Festen und Ritualen teil und lerne die Geschichten der Einheimischen kennen.<br></br>
+Kulinarische Highlights: Genieße regionale Köstlichkeiten und Spezialitäten.<br></br>
+Kulturelle Vielfalt: Entdecke Kunst, Musik und Handwerk, die eine Region besonders machen.<br></br>
+Tipp: Respektiere lokale Bräuche und zeige Offenheit – so wird dein Erlebnis unvergesslich! 🎭</p>
+        </div>
+    </section>
+    
+   <!-- Dos and Don'ts Section -->
+   <section class="dos-donts">
+    <div class="dos">
+        <h3>Do's</h3>
+        <ul>
+            <li>1. Unterstütze lokale Geschäfte.</li>
+            <li>2. Verwende wiederverwendbare Produkte.</li>
+            <li>3. Respektiere die lokale Kultur und Traditionen.</li>
+            <li>4. Plane umweltfreundliche Transporte.</li>
+        </ul>
+    </div>
+    <div class="donts">
+        <h3>Don'ts</h3>
+        <ul>
+            <li>1. Kaufe keine illegalen Wildtierprodukte.</li>
+            <li>2. Lasse keinen Müll in der Natur zurück.</li>
+            <li>3. Ignoriere lokale Regeln und Vorschriften nicht.</li>
+            <li>4. Vermeide unnötigen Wasser- und Stromverbrauch.</li>
+        </ul>
+    </div>
+</section>
+<section class="curved-text-video-section">
+    <div class="curved-text">
+        <svg width="400" height="220" viewBox="0 0 400 220">
+            <path id="curve" d="M110,160 A140,140 0 0,1 290,160" fill="transparent"/>
+            <text>
+                <textPath href="#curve" startOffset="50%" text-anchor="middle" fill="#ffffff" font-size="22" font-family="Lato">
+                Nachhaltige Welt
+                </textPath>
+            </text>
+        </svg>
+    </div>
+    <div class="video-container">
+        <video autoplay loop muted>
+            <source src="bilder/video.mov" type="video/mp4">
+            Dein Browser unterstützt dieses Videoformat nicht.
+        </video>
+    </div>
+</section>
+
+    
+
+
+<section id="how" class="centered-section">
+    <h2>Wie kann ich nachhaltig reisen?</h2>
+    <div class="tips-grid">
+        <div class="tip">
+            <img src="bilder/zugi.png" alt="Reise per Zug">
+            <div class="tip-content">
+                <h3>Reise per Zug</h3>
+                <p>Wähle umweltfreundliche Verkehrsmittel, um deinen CO2-Fußabdruck zu minimieren.</p>
+            </div>
+        </div>
+        <div class="tip">
+            <img src="bilder/apps.jpg" alt="Lokale Apps">
+            <div class="tip-content">
+                <h3>Lokale Apps nutzen</h3>
+                <p>Nutze Apps, die dir helfen, nachhaltige Unterkünfte und Restaurants zu finden.</p>
+            </div>
+        </div>
+        <div class="tip">
+            <img src="bilder/local.jpg" alt="Lokale Geschäfte">
+            <div class="tip-content">
+                <h3>Support für lokale Geschäfte</h3>
+                <p>Unterstütze die lokale Wirtschaft, indem du regionale Produkte kaufst.</p>
+            </div>
+        </div>
+        <div class="tip">
+            <img src="bilder/traditionen.jpg" alt="Lokale Traditionen">
+            <div class="tip-content">
+                <h3>Lokale Traditionen respektieren</h3>
+                <p>Warum es wichtig ist, lokale Kulturen zu respektieren und wie du es richtig machst.</p>
+            </div>
+        </div>
+    </div>
+</section>
+    
+
+    <section id="destinations" class="destinations">
+        <h2>Nachhaltige Reiseziele</h2>
+        <p>Entdecke trendy umweltfreundliche Reiseziele wie Costa Rica, Norwegen oder Neuseeland.</p>
+        <div class="destinations-grid">
+            <div class="destination-box">
+                <img src="bilder/costa.jpg" alt="Costa Rica">
+                <h3>Costa Rica</h3>
+                <p>Erlebe die beeindruckende Biodiversität und umweltfreundliche Tourismusangebote.</p>
+            </div>
+            <div class="destination-box">
+                <img src="bilder/norw.jpg" alt="Norwegen">
+                <h3>Norwegen</h3>
+                <p>Genieße die atemberaubenden Fjorde und nachhaltige Reisetipps.</p>
+            </div>
+            <div class="destination-box">
+                <img src="bilder/newsea.jpg" alt="Neuseeland">
+                <h3>Neuseeland</h3>
+                <p>Erkunde die unberührte Natur und nachhaltige Abenteuerangebote.</p>
+            </div>
+        </div>
+    </section>
+    <section id="testimonials" class="testimonials">
+        <h2>Kundenmeinungen</h2>
+        <div class="testimonials-container">
+            <div class="testimonial">
+                <p>"Das war die beste Reise meines Lebens! Nachhaltigkeit stand im Mittelpunkt, und ich habe so viel gelernt."</p>
+                <h4>- Lisa M.</h4>
+            </div>
+            <div class="testimonial">
+                <p>"Ich war beeindruckt von den nachhaltigen Reiseoptionen und der Unterstützung lokaler Gemeinschaften."</p>
+                <h4>- Max K.</h4>
+            </div>
+            <div class="testimonial">
+                <p>"Reisen mit einem positiven Einfluss auf die Umwelt – das ist die Zukunft, und diese Plattform hat es möglich gemacht!"</p>
+                <h4>- Sarah T.</h4>
+            </div>
+        </div>
+    </section><section id="signup" class="signup-form">
+        <h2>Jetzt Anmelden</h2>
+        <form action="#" method="POST">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Dein Name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">E-Mail</label>
+                <input type="email" id="email" name="email" placeholder="Deine E-Mail-Adresse" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Passwort</label>
+                <input type="password" id="password" name="password" placeholder="Erstelle ein Passwort" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Anmelden</button>
+            </div>
+        </form>
+    </section>
+    
+    <footer class="custom-footer">
+        <div class="footer-container">
+            <div class="footer-text">
+                <h2>Du willst mehr?</h2>
+                <p>Folge uns auf den sozialen Netzwerken:</p>
+                <div class="social-icons">
+                    <a href="#" target="_blank"><img src="bilder/YT.png" alt="Facebook"></a>
+                    <a href="#" target="_blank"><img src="bilder/insta.png" alt="Instagram"></a>
+                    <a href="#" target="_blank"><img src="bilder/x.avif" alt="Twitter"></a>
+                </div>
+            </div>
+            <div class="footer-qr">
+                <p>Lade dir jetzt die Conscious-App herunter, um nichts mehr zu verpassen!</p>
+                <img src="bilder/qr-code.png" alt="QR Code für App-Download">
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+      document.getElementById("dark-mode-toggle").addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+
+    // Debugging: Log anzeigen, um sicherzugehen, dass die Klasse angewendet wurde
+    console.log("Dark Mode toggled:", document.body.classList.contains("dark-mode"));
+});
+
+        const nav = document.getElementById('mobile-nav');
+
+        function toggleMenu() {
+            nav.classList.toggle('open');
+        }
+
+        const boxes = document.querySelectorAll('.image-box');
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        });
+
+        boxes.forEach(box => {
+            observer.observe(box);
+        });
+
+        var $content = document.querySelector('header .content'),
+            $blur = document.querySelector('header .overlay'),
+            wHeight = window.innerHeight;
+
+        window.addEventListener('resize', function () {
+            wHeight = window.innerHeight;
+        });
+
+        window.addEventListener('scroll', function () {
+            var scrollY = window.scrollY;
+
+            var slowScroll = scrollY / 2,
+                blurScroll = scrollY * 2,
+                opaScroll = 1.4 - scrollY / 400;
+
+            $content.style.transform = `translateY(${slowScroll}px)`;
+            $content.style.opacity = opaScroll;
+
+            $blur.style.opacity = blurScroll / wHeight;
+        });const blogPosts = [
+    {
+        title: "Nachhaltiges Reisen leicht gemacht",
+        content: "Erfahre, wie du deinen CO2-Fußabdruck minimierst und gleichzeitig die Welt genießt.",
+    },
+    {
+        title: "10 Tipps für umweltbewusstes Packen",
+        content: "Lerne, wie du mit leichtem Gepäck reist und die Umwelt schonst.",
+    },
+    {
+        title: "Top-Destinationen für nachhaltige Abenteuer",
+        content: "Entdecke Orte, die nachhaltigen Tourismus fördern und unvergessliche Erlebnisse bieten.",
+    },
+    {
+        title: "Lokale Traditionen respektieren",
+        content: "Warum es wichtig ist, lokale Kulturen zu respektieren und wie du es richtig machst.",
+    },
+];
+
+let currentPostIndex = 0;
+
+function updateBlogContent() {
+    const blogContent = document.getElementById("blog-content");
+    const post = blogPosts[currentPostIndex];
+
+    blogContent.innerHTML = `
+        <h3>${post.title}</h3>
+        <p>${post.content}</p>
+    `;
+
+    currentPostIndex = (currentPostIndex + 1) % blogPosts.length; // Wechselt zyklisch durch die Beiträge
+}
+
+// Initialer Aufruf
+updateBlogContent();
+
+// Automatisches Wechseln der Blogbeiträge alle 20 Sekunden
+setInterval(updateBlogContent, 10000);
+    </script>
+    <div class="fab">
+    <a href="#signup" title="Jetzt Anmelden">➕</a>
+</div>
+</body>
+</html>
