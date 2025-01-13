@@ -10,10 +10,10 @@
             --primary: #000000;
             --secondary: rgba(124,194,197,255);
             --accent: #ffffff;
-            --background: #ffffff;
+            --background: #000000;
             --white: #ffffff;
             --highlight: #cde2e4;
-            --navbar-footer-bg: #d3d3d3;
+            --navbar-footer-bg: #ffffff;
         }
 
         /* Allgemeine Stile */
@@ -27,6 +27,19 @@
             text-rendering: optimizelegibility;
             background-color: var(--background);
             color: var(--primary);
+        }
+
+        body {
+            font-size: 1.3em;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary);
+        }
+
+        a:hover {
+            color: var(--secondary);
         }
 
         body {
@@ -96,58 +109,158 @@
             opacity: 0;
             filter: blur(4px);
         }
+/* Navbar Styling */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: var(--background);
+    color: var(--white);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+}
 
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: -250px;
-            width: 250px;
-            height: 100%;
-            background: var(--navbar-footer-bg);
-            overflow-y: auto;
-            transition: left 0.3s ease;
-            z-index: 1000;
-        }
+.navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 1rem;
+}
 
-        nav.open {
-            left: 0;
-        }
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
 
-        nav a {
-            display: block;
-            padding: 15px;
-            font-size: 1.2em;
-            color: var(--primary);
-            border-bottom: 1px solid rgb(0, 0, 0);
-        }
+.logo:hover {
+    color: var(--highlight);
+}
 
-        nav a:hover {
-            background-color: var(--secondary);
-            color: var(--primary);
-        }
+.burger-menu {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    outline: none;
+}
 
-        .menu-toggle {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 1100;
-            cursor: pointer;
-            background: var(--secondary);
-            padding: 10px;
-            border-radius: 5px;
-        }
+.burger-line {
+    width: 25px;
+    height: 3px;
+    background: var(--white);
+    transition: transform 0.3s ease;
+}
 
-        .menu-toggle span {
-            display: block;
-            width: 25px;
-            height: 3px;
-            background: var(--primary);
-            margin: 5px 0;
-        }
+/* Navigation Links */
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
 
-        /* Blockquote Section */
-        .site {
+.nav-links li a {
+    text-decoration: none;
+    color: var(--white);
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-links li a:hover {
+    background-color: var(--secondary);
+    color: var(--background);
+}
+
+/* Nav Button Styling */
+.nav-button {
+    background-color: var(--secondary);
+    color: var(--background);
+    font-weight: bold;
+    padding: 0.5rem 1.5rem;
+    border-radius: 5px;
+    text-transform: uppercase;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.nav-button:hover {
+    background-color: var(--highlight);
+    transform: translateY(-2px);
+}
+
+/* Mobile Navigation */
+@media (max-width: 768px) {
+    .burger-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+.nav-links {
+    position: fixed;
+    top: 60px;
+    right: -100%;
+    background-color: var(--background);
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    width: 80%;
+    height: calc(100% - 60px);
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.nav-links.active {
+    right: 0;
+}
+
+.burger-menu.open .burger-line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.burger-menu.open .burger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.burger-menu.open .burger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+
+    .burger-menu.open .burger-line:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .burger-menu.open .burger-line:nth-child(2) {
+        opacity: 0;
+    }
+
+    .burger-menu.open .burger-line:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+    }
+}
+
+    /* Blockquote Section */
+    .site {
             padding: 20em 0;
             text-align: center;
             background-color: var(--highlight);
@@ -180,11 +293,20 @@
     border-radius: 100px; /* Abgerundete Ecken */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Leichte Schatten für Tiefe */
     text-align: center;
+}/* Nachhaltiges Reisen Section */
+.sustainable-travel {
+    padding: 1rem 1rem;
+    margin: 10rem auto;
+    max-width: 800px;
+    background-color: var(--white); /* Hintergrundfarbe für den Textbereich */
+    border-radius: 100px; /* Abgerundete Ecken */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Leichte Schatten für Tiefe */
+    text-align: center;
 }
 
 .sustainable-travel h3 {
     font-size: 1.8rem; /* Größerer Titel */
-    color: var(--primary);
+    color: var(--background);
     margin-bottom: 3rem;
     font-weight: bold;
 }
@@ -204,71 +326,20 @@
 
 @media (max-width: 768px) {
     .sustainable-travel {
-        padding: 1.5rem; /* Weniger Padding auf kleineren Bildschirmen */
-    }
-
-    .sustainable-travel h3 {
-        font-size: 1.5rem; /* Kleinere Schriftgröße für Titel */
+        margin: 2rem auto;
+        padding: 1rem;
+        text-align: left;
     }
 
     .sustainable-content p {
-        font-size: 0.95rem; /* Schriftgröße leicht verringern */
+        font-size: 0.9rem;
     }
 
     .sustainable-content h4 {
-        font-size: 1rem; /* Kleinere Schriftgröße für Untertitel */
+        font-size: 1rem;
     }
-}/* Sicherstellen, dass der Hintergrund des gesamten Body geändert wird */
-.dark-mode {
-    background-color: #000000 !important; /* Hintergrund Schwarz */
-    color: #ffffff !important; /* Text Weiß */
 }
 
-/* Elemente, die explizit den Hintergrund oder Text blockieren */
-.dark-mode * {
-    background-color: transparent !important; /* Verhindere weiße Hintergründe */
-    color: inherit !important; /* Vererbe die Textfarbe */
-}
-
-/* Spezielle Elemente wie Navigation oder Header */
-.dark-mode nav,
-.dark-mode header {
-    background-color: #000000 !important;
-    color: #ffffff !important;
-}
-
-/* Boxen und spezifische Abschnitte */
-.dark-mode .image-box,
-.dark-mode .destination-box,
-.dark-mode .testimonial,
-.dark-mode .tip,
-.dark-mode .dos,
-.dark-mode .donts,
-.dark-mode .signup-form,
-.dark-mode footer,
-.dark-mode header hgroup {
-    background-color: #000000 !important; /* Kästen Schwarz */
-    color: #ffffff !important; /* Text in Kästen Weiß */
-    border-color: #ffffff !important; /* Rahmen Weiß */
-}
-
-/* Links */
-.dark-mode a {
-    color: #ffffff !important; /* Links Weiß */
-}
-
-.dark-mode a:hover {
-    color: #000000 !important; /* Links Schwarz beim Hover */
-}
-
-/* Header-Text */
-.dark-mode h1,
-.dark-mode h2,
-.dark-mode h3,
-.dark-mode h4,
-.dark-mode p {
-    color: #ffffff !important; /* Text Weiß */
-}
 
 
 .parallax {
@@ -281,7 +352,7 @@
 .parallax .sustainable-travel {
     position: relative;
     z-index: 2;
-    background: rgba(255, 255, 255, 0.8);
+    background: rgb(255, 255, 255);
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -292,11 +363,10 @@
     display: grid; /* Grid-System aktivieren */
     grid-template-columns: repeat(2, 1fr); /* Zwei Spalten */
     gap: 1.5rem; /* Abstand zwischen den Karten */
-    margin: 4rem auto; /* Zentrierung nach oben/unten */
+    margin: 15rem auto; /* Zentrierung nach oben/unten */
     max-width: 1200px; /* Maximale Breite des Rasters */
     padding: 1rem;
 }
-
 .image-box {
     background: var(--primary);
     color: var(--highlight);
@@ -305,62 +375,57 @@
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
-}.image-grid {
-    grid-template-columns: repeat(2, 1fr); /* Zwei Spalten */
-    gap: 1rem; /* Weniger Abstand zwischen den Karten */
-    margin: 3rem auto; /* Weniger Abstand nach oben/unten */
-    max-width: 1000px; /* Maximale Breite des Rasters verkleinert */
+    position: relative; /* Für das Pseudo-Element */
+    overflow: hidden; /* Begrenzung des Inhalts */
 }
-
-.image-box {
-    padding: 1rem; /* Weniger Innenabstand */
-    border-radius: 6px; /* Leichter abgerundete Ecken */
-    font-size: 0.9rem; /* Kleinere Schriftgröße innerhalb der Box */
-}
-
-.image-box img {
-    width: 500%; /* Bild etwas kleiner */
-    height: auto;
-    margin-bottom: 0.5rem; /* Weniger Abstand unter dem Bild */
-}
-
-.image-box h3 {
-    font-size: 1rem; /* Kleinere Überschrift */
-    margin-bottom: 0.3rem; /* Weniger Abstand zur nächsten Zeile */
-}
-
-.image-box p {
-    font-size: 0.85rem; /* Kleinere Beschreibungstexte */
-    line-height: 1.4; /* Leichter kompaktere Zeilenabstände */
-}
-@media (max-width: 768px) {
-    .image-grid {
-        grid-template-columns: 1fr; /* Eine Spalte bei schmalen Bildschirmen */
-    }
-}
-
 
 .image-box:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(211, 249, 255, 0.2);
+    transform: scale(1.05); /* Vergrößert die Box */
+    box-shadow: 0 8px 16px rgba(211, 249, 255, 0.2); /* Stärkerer Schatten */
+}
+
+.image-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Dunkler Overlay-Effekt */
+    filter: blur(10px); /* Verschwommener Hintergrund */
+    z-index: 0; /* Hinter den Inhalten */
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out; /* Sanfter Übergang */
+}
+
+.image-box:hover::before {
+    opacity: 1; /* Sichtbarer verschwommener Hintergrund */
 }
 
 .image-box img {
     width: 100%;
     height: auto;
     border-radius: 8px;
+    position: relative; /* Überlagert den verschwommenen Hintergrund */
+    z-index: 1; /* Über dem Pseudo-Element */
     margin-bottom: 1rem;
 }
 
-.image-box h3 {
-    margin-bottom: 0.5rem;
+.image-box h3,
+.image-box p {
+    position: relative; /* Überlagert den verschwommenen Hintergrund */
+    z-index: 1; /* Über dem Pseudo-Element */
+}@media (max-width: 768px) {
+    .image-grid {
+        grid-template-columns: 1fr; /* Eine Spalte */
+    }
+
+    .image-box img {
+        height: auto;
+    }
 }
 
-        .image-box.visible {
-            opacity: 0,5;
-            transform: translateY(0);
-        
-}
+
         
    /* Dos and Don'ts Styles */
 .dos-donts {
@@ -368,7 +433,7 @@
     flex-wrap: wrap; /* Flexibles Layout für kleinere Bildschirme */
     justify-content: center;
     gap: 2rem;
-    margin: 3rem auto;
+    margin: 15rem auto;
     max-width: 1200px;
     padding: 1rem;
 }
@@ -435,13 +500,11 @@
 
 @media (max-width: 768px) {
     .dos-donts {
-        flex-direction: column; /* Stapeln bei kleineren Bildschirmen */
+        flex-direction: column;
+        gap: 2rem;
     }
-
-    .dos, .donts {
-        max-width: 100%;
-    }
-}.curved-text-video-section {
+}
+.curved-text-video-section {
     background-color: #000000; /* Schwarzer Hintergrund */
     margin: ;
     padding: 8rem 8; /* Abstand oben und unten */
@@ -475,40 +538,82 @@
 
 
 
-        .video-container {
-            width: 300px; /* Breite des Videos */
-            height: 300px; /* Höhe des Videos */
-            margin: 0 auto; /* Zentriert das Video */
-            border-radius: 50%; /* Kreisförmige Darstellung */
-            overflow: hidden; /* Verhindert, dass das Video aus dem Kreis ragt */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Schatten für einen 3D-Effekt */
-        }
+.video-text-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem auto;
+    max-width: 1200px;
+    padding: 1rem;
+}
 
-        .video-container video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Das Video wird innerhalb des Kreises skaliert */
-        }
+.text-box {
+    color: var(--white);
+    font-size: 1rem;
+    line-height: 1.6;
+    flex: 1;
+    max-width: 300px;
+}
 
-        @media (max-width: 768px) {
-            .dos-donts {
-                flex-direction: column;
-                gap: 1rem;
-            }
+.left-text {
+    text-align: left;
+}
 
-            .dos, .donts {
-                max-width: 100%;
-            }
+.right-text {
+    text-align: right;
+}
 
-            .video-container {
-                margin-top: 1rem;
-            }
-        }
+.video-container {
+    width: 400px; /* Größere Breite für Desktop */
+    height: 400px; /* Größere Höhe für Desktop */
+    border-radius: 50%; /* Kreisförmige Darstellung */
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+}
+
+.video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+    /* Video und Texte neben dem Video */
+    .video-text-container {
+        flex-direction: column; /* Inhalte stapeln */
+        align-items: center; /* Zentrieren */
+        gap: 1rem; /* Weniger Abstand */
+        padding: 1rem; /* Weniger Padding */
+    }
+
+    .text-box {
+        max-width: 90%; /* Breite für kleinere Bildschirme */
+        text-align: center; /* Texte zentrieren */
+    }
+
+    .video-container {
+        width: 280px; /* Kleinere Video-Größe */
+        height: 280px;
+    }
+
+    /* Gebogener Text */
+    .curved-text svg {
+        width: 300px; /* Kleinere SVG-Breite */
+        height: auto; /* Proportionen beibehalten */
+    }
+
+    .curved-text text {
+        font-size: 18px; /* Kleinere Schriftgröße */
+    }
+}
+
+
         .testimonials {
     text-align: center;
-    background-color: var(--highlight);
+    background-color: var(--background);
     padding: 3rem 1rem;
-    margin: 3rem auto;
+    margin: 1rem auto;
     border-radius: 8px;
     max-width: 800px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -517,7 +622,7 @@
 .testimonials h2 {
     font-size: 2rem;
     margin-bottom: 2rem;
-    color: var(--primary);
+    color: var(--background);
 }
 
 .testimonials-container {
@@ -544,7 +649,7 @@
 
 .testimonial p {
     font-size: 1rem;
-    color: var(--primary);
+    color: var(--background);
     margin-bottom: 1rem;
     line-height: 1.5;
     font-style: italic;
@@ -578,7 +683,8 @@
     color: var(--primary);
 }
 
-.tips-grid {
+/* Styles für die Tips-Section */
+#tips-section .tips-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive Grid */
     gap: 1.5rem;
@@ -586,7 +692,7 @@
     max-width: 1200px;
 }
 
-.tip {
+#tips-section .tip {
     background: var(--highlight); /* Hintergrundfarbe */
     border: 2px solid var(--secondary); /* Border mit Sekundärfarbe */
     border-radius: 10px; /* Abgerundete Ecken */
@@ -599,19 +705,19 @@
     text-align: center;
 }
 
-.tip:hover {
+#tips-section .tip:hover {
     transform: translateY(-5px); /* Leichtes Schweben */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Stärkerer Schatten */
 }
 
-.tip img {
+#tips-section .tip img {
     width: 100%;
     height: 150px;
     object-fit: cover; /* Skaliert das Bild, ohne es zu verzerren */
     border-bottom: 2px solid var(--secondary); /* Trennung durch Linie */
 }
 
-.tip-content {
+#tips-section .tip-content {
     padding: 1rem;
     display: flex;
     flex-direction: column;
@@ -619,27 +725,28 @@
     justify-content: center;
 }
 
-.tip-content h3 {
+#tips-section .tip-content h3 {
     margin-bottom: 0.5rem;
     font-size: 1.2rem;
     color: var(--primary);
 }
 
-.tip-content p {
+#tips-section .tip-content p {
     font-size: 0.95rem;
     color: var(--primary);
     line-height: 1.4;
 }
 
 @media (max-width: 768px) {
-    .tips-grid {
+    #tips-section .tips-grid {
         grid-template-columns: 1fr; /* Eine Spalte bei kleineren Geräten */
     }
 
-    .tip img {
+    #tips-section .tip img {
         height: 120px; /* Bildhöhe für kleinere Bildschirme anpassen */
     }
 }
+
 .signup-form {
     text-align: center;
     background-color: var(--highlight);
@@ -740,51 +847,159 @@
         }
 
         .destinations {
-            text-align: center;
-            padding: -3rem;
-            margin: 10rem auto;
-            max-width: 2000px;
-            position: relative;
-            background-image: url('bilder/palme.webp');
-            background-size: 700px 500px;
-            background-position: calc(-10% - 50px) center;
-            background-repeat: no-repeat;
-        }
+    text-align: center;
+    padding: -100rem;
+    margin: 5rem auto;
+    margin-bottom: 10rem;
+    max-width: 1200px; /* Breite leicht vergrößert */
+    position: relative;
+    background-image: url('bilder/palme.webp');
+    background-size: 480px 290px; /* Größe des Hintergrundbildes leicht vergrößert */
+    background-position: calc(-10% - 50px) center;
+    background-repeat: no-repeat;
+}
 
-        .destinations-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem auto;
-            padding: 1rem;
-        }
+.destinations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); /* Breite der Boxen leicht vergrößert */
+    gap: 1.5rem; /* Abstand zwischen den Boxen leicht vergrößert */
+    margin: 2rem auto; /* Abstand nach oben und unten leicht vergrößert */
+    padding: 1rem; /* Innenabstand leicht vergrößert */
+}
 
-        .destination-box {
-            background: var(--highlight);
-            padding: 1.5rem;
-            border-radius: 8px;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
+.destination-box {
+    background: var(--highlight);
+    padding: 1.5rem; /* Innenabstand der Boxen leicht vergrößert */
+    border-radius: 8px; /* Abrundung bleibt gleich */
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Schatten bleibt gleich */
+    transition: transform 0.3s, box-shadow 0.3s;
+}
 
-        .destination-box:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
+.destination-box:hover {
+    transform: scale(1.05); /* Vergrößerung beim Hover bleibt gleich */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Hover-Schatten bleibt gleich */
+}
 
-        .destination-box img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-        }
+.destination-box img {
+    width: 98%; /* Breite des Bildes leicht vergrößert */
+    height: auto;
+    border-radius: 8px; /* Abrundung bleibt gleich */
+    margin-bottom: 1rem; /* Abstand unter dem Bild bleibt gleich */
+}
 
-        .destination-box h3 {
-            margin-bottom: 0.5rem;
-            color: var(--primary);
-        }.custom-footer {
-    background-color: #000000; /* Hintergrundfarbe des Footers */
+.destination-box h3 {
+    margin-bottom: 0.5rem; /* Abstand unter der Überschrift bleibt gleich */
+    font-size: 1.125rem; /* Schriftgröße bleibt gleich */
+    color: var(--primary);
+}
+/* Reise buchen Sektion */
+.book-trip {
+    text-align: center;
+    background-color: var(--background);
+    padding: 4rem 1rem;
+    margin: 15rem auto;
+    border-radius: 10px;
+    max-width: 800px;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+    animation: fadeInUp 1s ease-in-out;
+}
+
+.book-trip h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--white);
+}
+
+.book-trip p {
+    font-size: 1.1rem;
+    color: var(--white);
+    margin-bottom: 2rem;
+}
+
+.booking-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    flex: 1 1 calc(50% - 1rem);
+    min-width: 200px;
+    text-align: left;
+}
+
+.form-group label {
+    font-size: 1rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: var(--secondary);
+    outline: none;
+}
+
+.submit-button {
+    background-color: var(--secondary);
+    color: var(--white);
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    align-self: center;
+    flex-basis: 100%;
+}
+
+.submit-button:hover {
+    background-color: var(--primary);
+    transform: translateY(-2px);
+}
+
+/* Animation für die Sektion */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .booking-form {
+        flex-direction: column;
+    }
+
+    .form-group {
+        flex: 1 1 100%;
+    }
+}
+
+
+        .custom-footer {
+    background-color: #0d484c; /* Hintergrundfarbe des Footers */
     padding: 2rem 1rem;
     text-align: center;
     box-shadow: 0 -4px 8px rgba(97, 96, 96, 0.1);
@@ -909,14 +1124,27 @@
         <span></span>
     </div>
 
-    <!-- Navigation -->
-    <nav id="mobile-nav">
-        <a href="#why"><br></br></a>
-        <a href="#how">Wie geht's?</a>
-        <a href="#destinations">Reiseziele</a>
-        <a href="#testimonials">Kundenmeinungen</a>
-    
-    </nav>
+  <!-- Navbar -->
+<nav class="navbar">
+    <div class="navbar-container">
+        <a href="#" class="logo">Conscious.</a>
+        <button class="burger-menu" id="burger-menu">
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+        </button>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#why">Warum Nachhaltigkeit?</a></li>
+            <li><a href="#how">Wie geht's?</a></li>
+            <li><a href="#destinations">Reiseziele</a></li>
+            <li><a href="#testimonials">Kundenmeinungen</a></li>
+            <li>
+                <a href="#book-trip" class="nav-button">Jetzt Buchen</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
 
     <!-- Blockquote Section -->
     <section class="site">
@@ -933,9 +1161,7 @@
         <div class="background-section section-2"></div>
         <div class="background-section section-3"></div>
     </div>
-    <div class="dark-mode-container">
-        <button id="dark-mode-toggle" class="dark-mode-btn">Dark Mode</button>
-    </div>    
+      
     
     <section class="parallax">
         <div class="sustainable-travel">
@@ -954,47 +1180,27 @@
     
     <section class="image-grid">
         <div class="image-box">
-            <img src="bilder/hotel.jpg" alt="Reisebild 1">
+            <img src="bilder/hotel.jpg" alt="Nachhaltige Unterkünfte">
             <h3>Nachhaltige Unterkünfte</h3>
-            <p>Nachhaltige Unterkünfte – Umweltfreundlich Reisen und Übernachten
-
-                Die Entscheidung für nachhaltige Unterkünfte während einer Reise trägt wesentlich dazu bei, die Umwelt zu schützen, den ökologischen Fußabdruck zu minimieren und lokale Gemeinschaften zu unterstützen. <br></br>
-                Umweltfreundliche Hotels, Pensionen und Ferienhäuser setzen verstärkt auf nachhaltige Praktiken, um Gästen ein komfortables, authentisches und umweltbewusstes Erlebnis zu bieten.
-                
-                Was macht eine Unterkunft nachhaltig?</p>
+            <p>Umweltfreundlich reisen und übernachten. Unterstütze lokale Gemeinschaften und minimiere deinen CO₂-Fußabdruck.</p>
         </div>
         <div class="image-box">
-            <img src="bilder/essen.jpg" alt="Reisebild 2">
+            <img src="bilder/essen.jpg" alt="Lokale Küche">
             <h3>Lokale Küche</h3>
-            <p>Entdecke die Region mit jedem Bissen
-Die lokale Küche bietet dir einen authentischen Einblick in die Kultur und Traditionen deines Reiseziels. Mit frischen, regionalen Zutaten unterstützt du die Umwelt und die lokale Wirtschaft.
-<br></br>
-Kulturelle Verbindung: Essen spiegelt die Seele eines Ortes wider. Probier traditionelle Gerichte für ein echtes Erlebnis.<br></br>
-Nachhaltigkeit: Lokale Produkte reduzieren den CO₂-Fußabdruck und sind oft frischer und gesünder.<br></br>
-Gaumen-Abenteuer: Entdecke neue Geschmacksrichtungen auf Märkten, Straßenständen oder in kleinen Restaurants.</p>
+            <p>Erlebe die Region durch frische, regionale Zutaten und entdecke neue Geschmacksrichtungen.</p>
         </div>
         <div class="image-box">
-            <img src="bilder/natur.jpg" alt="Reisebild 3">
+            <img src="bilder/natur.jpg" alt="Naturschutzgebiete">
             <h3>Naturschutzgebiete</h3>
-            <p>Erlebe die Schönheit unberührter Landschaften und geschützter Parks, während du zur Erhaltung der Natur beiträgst.
-                <br></br>
-Einzigartige Erlebnisse: Beobachte seltene Tiere und Pflanzen in ihrem natürlichen Lebensraum.<br></br>
-Nachhaltiger Tourismus: Unterstütze Schutzprojekte und lerne die Bedeutung der Biodiversität kennen.<br></br>
-Ruhe und Inspiration: Entkomme dem Alltag und finde Erholung in unberührter Natur.<br></br>
-Tipp: Respektiere die Regeln der Schutzgebiete, um ihre Schönheit für kommende Generationen zu bewahren! 🌿</p>
+            <p>Bewahre die Natur und genieße unberührte Landschaften in geschützten Parks.</p>
         </div>
         <div class="image-box">
-            <img src="bilder/festival.jpg" alt="Reisebild 4">
+            <img src="bilder/festival.jpg" alt="Kulturelle Erlebnisse">
             <h3>Kulturelle Erlebnisse</h3>
-            <p>Kulturelle Erlebnisse: Lokale Traditionen entdecken
-Tauche in die Vielfalt der Kulturen ein und erlebe authentische Traditionen hautnah.
-<br></br>
-Einzigartige Begegnungen: Nimm an Festen und Ritualen teil und lerne die Geschichten der Einheimischen kennen.<br></br>
-Kulinarische Highlights: Genieße regionale Köstlichkeiten und Spezialitäten.<br></br>
-Kulturelle Vielfalt: Entdecke Kunst, Musik und Handwerk, die eine Region besonders machen.<br></br>
-Tipp: Respektiere lokale Bräuche und zeige Offenheit – so wird dein Erlebnis unvergesslich! 🎭</p>
+            <p>Erfahre authentische Traditionen und tauche in die lokale Kultur ein.</p>
         </div>
     </section>
+    
     
    <!-- Dos and Don'ts Section -->
    <section class="dos-donts">
@@ -1028,18 +1234,31 @@ Tipp: Respektiere lokale Bräuche und zeige Offenheit – so wird dein Erlebnis 
             </text>
         </svg>
     </div>
-    <div class="video-container">
-        <video autoplay loop muted>
-            <source src="bilder/video.mov" type="video/mp4">
-            Dein Browser unterstützt dieses Videoformat nicht.
-        </video>
+    <div class="video-text-container">
+        <div class="text-box left-text">
+            <p>
+                Nachhaltigkeit beginnt mit kleinen Schritten. Unterstütze lokale Projekte, reise umweltfreundlich, und entdecke die Welt mit Verantwortung.
+            </p>
+        </div>
+        <div class="video-container">
+            <video autoplay loop muted>
+                <source src="bilder/video.mov" type="video/mp4">
+                Dein Browser unterstützt dieses Videoformat nicht.
+            </video>
+        </div>
+        <div class="text-box right-text">
+            <p>
+                Reisen bedeutet mehr als nur Bewegung. Es geht darum, Spuren zu hinterlassen, die der Welt nützen, nicht schaden. Denk grün, reise bewusst.
+            </p>
+        </div>
     </div>
 </section>
+
 
     
 
 
-<section id="how" class="centered-section">
+<section id="tips-section" class="centered-section">
     <h2>Wie kann ich nachhaltig reisen?</h2>
     <div class="tips-grid">
         <div class="tip">
@@ -1072,6 +1291,7 @@ Tipp: Respektiere lokale Bräuche und zeige Offenheit – so wird dein Erlebnis 
         </div>
     </div>
 </section>
+
     
 
     <section id="destinations" class="destinations">
@@ -1113,6 +1333,7 @@ Tipp: Respektiere lokale Bräuche und zeige Offenheit – so wird dein Erlebnis 
         </div>
     </section><section id="signup" class="signup-form">
         <h2>Jetzt Anmelden</h2>
+        <p>Werde teil der Weltveränderer und poste Beiträge zu deinen Erlebnissen</p>
         <form action="#" method="POST">
             <div class="form-group">
                 <label for="name">Name</label>
@@ -1131,6 +1352,35 @@ Tipp: Respektiere lokale Bräuche und zeige Offenheit – so wird dein Erlebnis 
             </div>
         </form>
     </section>
+    <section id="book-trip" class="book-trip">
+        <h2>Reise buchen</h2>
+        <p>Plane deine nächste nachhaltige Reise mit uns. Einfach, schnell und umweltbewusst.</p>
+        <form class="booking-form">
+            <div class="form-group">
+                <label for="destination">Reiseziel</label>
+                <select id="destination" name="destination" required>
+                    <option value="" disabled selected>Wähle ein Ziel</option>
+                    <option value="costa-rica">Costa Rica</option>
+                    <option value="norwegen">Norwegen</option>
+                    <option value="neuseeland">Neuseeland</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="start-date">Startdatum</label>
+                <input type="date" id="start-date" name="start-date" required>
+            </div>
+            <div class="form-group">
+                <label for="end-date">Enddatum</label>
+                <input type="date" id="end-date" name="end-date" required>
+            </div>
+            <div class="form-group">
+                <label for="people">Anzahl der Reisenden</label>
+                <input type="number" id="people" name="people" min="1" max="10" placeholder="1" required>
+            </div>
+            <button type="submit" class="submit-button">Reise buchen</button>
+        </form>
+    </section>
+    
     
     <footer class="custom-footer">
         <div class="footer-container">
@@ -1151,18 +1401,26 @@ Tipp: Respektiere lokale Bräuche und zeige Offenheit – so wird dein Erlebnis 
     </footer>
     
     <script>
-      document.getElementById("dark-mode-toggle").addEventListener("click", () => {
+       document.getElementById("dark-mode-toggle").addEventListener("click", () => {
     document.body.classList.toggle("dark-mode");
-
-    // Debugging: Log anzeigen, um sicherzugehen, dass die Klasse angewendet wurde
-    console.log("Dark Mode toggled:", document.body.classList.contains("dark-mode"));
 });
 
-        const nav = document.getElementById('mobile-nav');
+const burgerMenu = document.getElementById('burger-menu');
+const navLinks = document.getElementById('nav-links');
 
-        function toggleMenu() {
-            nav.classList.toggle('open');
-        }
+burgerMenu.addEventListener('click', () => {
+    burgerMenu.classList.toggle('open');
+    navLinks.classList.toggle('active');
+});
+
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+        navLinks.classList.remove('active');
+        burgerMenu.classList.remove('open');
+    }
+});
+
+        
 
         const boxes = document.querySelectorAll('.image-box');
 
@@ -1193,11 +1451,10 @@ Tipp: Respektiere lokale Bräuche und zeige Offenheit – so wird dein Erlebnis 
                 blurScroll = scrollY * 2,
                 opaScroll = 1.4 - scrollY / 400;
 
-            $content.style.transform = `translateY(${slowScroll}px)`;
-            $content.style.opacity = opaScroll;
+                $content.style.transform = `translateY(${slowScroll}px)`;
+$content.style.opacity = opaScroll;
+$blur.style.opacity = blurScroll / wHeight;
 
-            $blur.style.opacity = blurScroll / wHeight;
-        });const blogPosts = [
     {
         title: "Nachhaltiges Reisen leicht gemacht",
         content: "Erfahre, wie du deinen CO2-Fußabdruck minimierst und gleichzeitig die Welt genießt.",
@@ -1214,7 +1471,7 @@ Tipp: Respektiere lokale Bräuche und zeige Offenheit – so wird dein Erlebnis 
         title: "Lokale Traditionen respektieren",
         content: "Warum es wichtig ist, lokale Kulturen zu respektieren und wie du es richtig machst.",
     },
-];
+;
 
 let currentPostIndex = 0;
 
@@ -1239,5 +1496,10 @@ setInterval(updateBlogContent, 10000);
     <div class="fab">
     <a href="#signup" title="Jetzt Anmelden">➕</a>
 </div>
+document.querySelector('.booking-form').addEventListener('submit', (e) => {
+    e.preventDefault(); // Verhindert die Standard-Formularaktion
+    alert('Vielen Dank! Deine Reise wurde erfolgreich gebucht.'); // Erfolgsnachricht
+});
+
 </body>
 </html>
